@@ -8,7 +8,7 @@
   },
   "sources": [
     {
-      "url": "https://github.com/elfin8er/Snapkg/blob/master/packages/snapkg/blocks/Snapkg/blocks.xml",
+      "url": "https://raw.githubusercontent.com/elfin8er/Snapkg/master/packages/snapkg/blocks/Snapkg/blocks.xml",
       "provides": [
         {
           "s": "📦 Install from URL %&apos;package&apos;",
