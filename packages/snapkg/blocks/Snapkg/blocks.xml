@@ -1,0 +1,13 @@
+<blocks app="Snap! 9.0, https://snap.berkeley.edu" version="2">
+  <palette>
+    <category name="Snapkg" color="0,116,143,1"/>
+  </palette>
+  <block-definition s="📦 Install from URL %&apos;package&apos;" type="command" category="Snapkg">
+    <header></header>
+    <code></code>
+    <translations></translations>
+    <inputs>
+      <input type="%s">https://github.com/elfin8er/Snapkg/master/packages/websockets/index.json</input>
+    </inputs>
+  </block-definition>
+</blocks>
