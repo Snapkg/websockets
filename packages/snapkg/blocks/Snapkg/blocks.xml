@@ -7,7 +7,7 @@
     <code></code>
     <translations></translations>
     <inputs>
-      <input type="%s">https://github.com/elfin8er/Snapkg/master/packages/websockets/index.json</input>
+      <input type="%s">https://raw.githubusercontent.com/elfin8er/Snapkg/master/packages/snapkg/index.json</input>
     </inputs>
   </block-definition>
 </blocks>
