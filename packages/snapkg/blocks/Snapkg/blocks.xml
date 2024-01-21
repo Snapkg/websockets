@@ -1,5 +1,5 @@
 <blocks app="Snap! 9.0, https://snap.berkeley.edu" version="2">
-  <block-definition s="📦 Install from %&apos;install_type&apos; %&apos;URL&apos;" type="command" category="Snapkg">
+  <block-definition s="📦Install from %&apos;install_type&apos; %&apos;URL&apos;" type="command" category="Snapkg">
     <variables>
       <list struct="atomic" id="852">pkg_sources,pkg_sources_i,debug,source,pkg,pkg_name,start_time,pkg_version,pkg_author,installed_i</list>
     </variables>
