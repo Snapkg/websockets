@@ -53,9 +53,22 @@ Once you've found a package that you'd like to install, you can install it by us
 ### Uninstalling a package
 If you decide later that you no longer need a package that you installed, you can use the 📦**Uninstall package by [Name]** block. Entering the name of a package will allow you to uninstall a Snapkg package.
 
-## Contributing
+## Contribution Guidelines
 
-There are several ways to contribute to the Snapkg project. Below are just a few of the ways that you can help.
+There are several ways to contribute to the Snapkg project, but before we get in, there are a few general guidelines that should be followed.
+
+* Javascript blocks should not exist in the "default" repository due to their security concerns.
+
+* A task should be created in the Github issue tracker for the following:
+ 
+  - Before a new package is added to a repository
+  - Major Bugs, feature enhancements, etc.
+
+* Tasks created in the issue tracker should remain open until a package has it's first release in it's production repository or until the Bug, feature enhancement, etc. has been resolved/completed.
+
+* Commits should be clear and concise and should reference a Github issue number if feasible.
+
+Below are just a few of the ways that you can help with the project:
 
 * **Package Development**
 
@@ -69,7 +82,7 @@ There are several ways to contribute to the Snapkg project. Below are just a few
 * **Core Development**
 
   - Core development is the development of Snapkg itself.
-  - It includes designing and maintaining the package and repository schemas.
+  - It includes designing and maintaining the Snapkg package and repository schemas.
 
 * **Documentation**
 
@@ -81,5 +94,5 @@ There are several ways to contribute to the Snapkg project. Below are just a few
 
 * **Testing/QA**
 
-  - Testing Snapkg and it's package is one way to ensure a smooth experience for end-users.
+  - Testing Snapkg and it's packages is one way to ensure a smooth experience for end-users.
   - Issues should be reported in the issue tracker.
