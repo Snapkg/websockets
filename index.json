@@ -1,6 +1,6 @@
 {
   "name": "Snapkg",
-  "url": "https://raw.githubusercontent.com/elfin8er/Snapkg/master/index.json",
+  "url": "https://raw.githubusercontent.com/elfin8er/Snapkg/development/index.json",
   "packages": [
     {
       "name": "snapkg",
@@ -10,7 +10,7 @@
         "username": "elfin8er",
         "url": "https://snap.berkeley.edu/user?username=elfin8er"
       },
-      "source": "https://raw.githubusercontent.com/elfin8er/Snapkg/master/packages/snapkg/index.json",
+      "source": "https://raw.githubusercontent.com/elfin8er/Snapkg/development/packages/snapkg/index.json",
       "provides": [],
       "depends": []
     },
@@ -22,7 +22,7 @@
         "username": "elfin8er",
         "url": "https://snap.berkeley.edu/user?username=elfin8er"
       },
-      "source": "https://raw.githubusercontent.com/elfin8er/Snapkg/master/packages/websockets/index.json",
+      "source": "https://raw.githubusercontent.com/elfin8er/Snapkg/development/packages/websockets/index.json",
       "provides": [
         {
           "s": "new WebSocket ( %&apos;url&apos; )",

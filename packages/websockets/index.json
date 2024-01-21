@@ -8,7 +8,7 @@
   },
   "sources": [
     {
-      "url": "https://raw.githubusercontent.com/elfin8er/Snapkg/master/packages/websockets/blocks/sensing/blocks.xml",
+      "url": "https://raw.githubusercontent.com/elfin8er/Snapkg/development/packages/websockets/blocks/sensing/blocks.xml",
       "provides": [
         {
           "s":"new WebSocket ( %&apos;url&apos; )",
