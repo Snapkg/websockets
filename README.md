@@ -8,14 +8,18 @@
 <h4 align="center">A package manager for Berkeley's <a href="http://snap.berkeley.edu/" target="_blank">Snap!</a> programming language.</h4>
 
 <p align="center">
-  <a href="#features">Features</a> •
+  <a href="#key-features">Key Features</a> •
   <a href="#how-to-use">How To Use</a> •
-  <a href="#download">Download</a> •
+  <a href="#contribution-guidelines">Contribution Guidelines</a> •
   <a href="#license">License</a>
 </p>
 
 ![screenshot](https://svgsilh.com/svg_v2/3283713-00bcd4.svg)
-(placeholder banner)
+
+<sup>(placeholder banner)</sup>
+
+> **Note:**
+> *This project is still in early development, so some features may not work as advertised.*
 
 ## Key Features
 
