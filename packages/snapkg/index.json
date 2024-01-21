@@ -11,8 +11,18 @@
       "url": "https://raw.githubusercontent.com/elfin8er/Snapkg/master/packages/snapkg/blocks/Snapkg/blocks.xml",
       "provides": [
         {
-          "s": "📦 Install from URL %&apos;package&apos;",
+          "s": "📦Install from %&apos;install_type&apos; %&apos;URL&apos;",
           "type": "command",
+          "category": "Snapkg"
+        },
+        {
+          "s": "📦List installed",
+          "type": "reporter",
+          "category": "Snapkg"
+        },
+        {
+          "s": "📦List available",
+          "type": "reporter",
           "category": "Snapkg"
         }
       ]
