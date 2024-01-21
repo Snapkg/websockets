@@ -16,12 +16,12 @@
           "category": "sensing"
         },
         {
-          "s": "%&apos;ws&apos; .on %&apos;event&apos; %&apos;callback&apos;",
+          "s": "%&apos;ws&apos; .on %&apos;event&apos; do %&apos;callback&apos;",
           "type": "command",
           "category": "sensing"
         },
         {
-          "s": "%&apos;ws&apos; .send %&apos;message&apos;", 
+          "s": "%&apos;ws&apos; .send ( %&apos;message&apos; )", 
           "type": "command",
           "category": "sensing"
         },
