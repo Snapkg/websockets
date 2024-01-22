@@ -1,0 +1,37 @@
+{
+  "schema": 0.1,
+  "name": "websockets",
+  "version": 0.1,
+  "authors": [
+      {
+          "name": "Bailey",
+          "username": "elfin8er",
+          "url": "elfin8er@gmail.com"
+      }
+  ],
+  "sources": {
+      "blocks": [
+          {
+              "url": "https://raw.githubusercontent.com/elfin8er/Snapkg/development/repositories/default/packages/snapkg/blocks/Snapkg/blocks.xml",
+              "provides": [
+                  {
+                      "spec": "new WebSocket ( %'url' )",
+                      "category": "sensing"
+                  },
+                  {
+                      "spec": "%'ws' .send ( %'message' )",
+                      "category": "sensing"
+                  },
+                  {
+                      "spec": "%'ws' .on %'event' do %'callback'",
+                      "category": "sensing"
+                  },
+                  {
+                      "spec": "%'ws' .close",
+                      "category": "sensing"
+                  }
+              ]
+          }
+      ]
+  }
+}

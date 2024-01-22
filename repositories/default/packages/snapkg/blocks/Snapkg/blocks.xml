@@ -1,0 +1,1740 @@
+<blocks app="Snap! 9.0, https://snap.berkeley.edu" version="2">
+  <palette>
+    <category name="Snapkg" color="0,116,143,1"/>
+  </palette>
+  <block-definition s="📦Add repository from %&apos;type&apos; %&apos;URL&apos;" type="command" category="Snapkg">
+    <variables>
+      <list struct="atomic" id="6">debug,start_time</list>
+    </variables>
+    <header></header>
+    <code></code>
+    <translations></translations>
+    <inputs>
+      <input type="%s" readonly="true">URL<options>URL&#xD;JSON&#xD;List</options>
+      </input>
+      <input type="%s">https://raw.githubusercontent.com/elfin8er/Snapkg/master/index.json</input>
+    </inputs>
+    <script>
+      <block s="doSetVar">
+        <l>start_time</l>
+        <block s="reportDate">
+          <l>
+            <option>time in milliseconds</option>
+          </l>
+        </block>
+      </block>
+      <block s="doIf">
+        <block s="reportVariadicEquals">
+          <list>
+            <block var="type"/>
+            <l>JSON</l>
+          </list>
+        </block>
+        <script>
+          <custom-block s="📦Add repository from %s %s">
+            <l>List</l>
+            <block s="reportTextSplit">
+              <block var="URL"/>
+              <l>
+                <option>json</option>
+              </l>
+            </block>
+            <variables>
+              <variable name="debug">
+                <l>0</l>
+              </variable>
+              <variable name="start_time">
+                <l>1705863638741</l>
+              </variable>
+            </variables>
+          </custom-block>
+        </script>
+        <list>
+          <block s="reportVariadicEquals">
+            <list>
+              <block var="type"/>
+              <l>URL</l>
+            </list>
+          </block>
+          <script>
+            <block s="doAddToList">
+              <block s="reportJoinWords">
+                <list>
+                  <l>Downloading </l>
+                  <block var="URL"/>
+                </list>
+              </block>
+              <block s="reportApplyExtension">
+                <l>var_get(name)</l>
+                <list>
+                  <l>📦log</l>
+                </list>
+              </block>
+            </block>
+            <custom-block s="📦Add repository from %s %s">
+              <l>JSON</l>
+              <block s="reportURL">
+                <block var="URL"/>
+              </block>
+              <variables>
+                <variable name="debug">
+                  <l>0</l>
+                </variable>
+                <variable name="start_time">
+                  <l>1705863638725</l>
+                </variable>
+              </variables>
+            </custom-block>
+          </script>
+          <block s="reportVariadicEquals">
+            <list>
+              <block var="type"/>
+              <l>List</l>
+            </list>
+          </block>
+          <script>
+            <block s="doAddToList">
+              <block var="URL"/>
+              <block s="reportListItem">
+                <l>2</l>
+                <block s="reportListItem">
+                  <l>2</l>
+                  <block s="reportApplyExtension">
+                    <l>var_get(name)</l>
+                    <list>
+                      <l>📦</l>
+                    </list>
+                  </block>
+                </block>
+              </block>
+            </block>
+          </script>
+        </list>
+      </block>
+      <block s="doAddToList">
+        <block s="reportJoinWords">
+          <list>
+            <l>Done in </l>
+            <block s="reportJoinWords">
+              <list>
+                <block s="reportDifference">
+                  <block s="reportDate">
+                    <l>
+                      <option>time in milliseconds</option>
+                    </l>
+                  </block>
+                  <block var="start_time"/>
+                </block>
+                <l> ms</l>
+              </list>
+            </block>
+          </list>
+        </block>
+        <block s="reportApplyExtension">
+          <l>var_get(name)</l>
+          <list>
+            <l>📦log</l>
+          </list>
+        </block>
+      </block>
+    </script>
+    <scripts>
+      <comment x="471" y="186.7" w="230" collapsed="false">TODO:&#xD;&#xD;- Check if repository already exists before adding it&#xD;- Fix issue with repeated &quot;Done&quot; messages in log</comment>
+    </scripts>
+  </block-definition>
+  <block-definition s="📦List available packages" type="reporter" category="Snapkg">
+    <variables>
+      <list struct="atomic" id="102">a</list>
+    </variables>
+    <header></header>
+    <code></code>
+    <translations></translations>
+    <inputs></inputs>
+    <script>
+      <block s="doSetVar">
+        <l>a</l>
+        <block s="reportNewList">
+          <list></list>
+        </block>
+      </block>
+      <block s="doForEach">
+        <l>item</l>
+        <block s="reportListItem">
+          <l>2</l>
+          <block s="reportListItem">
+            <l>3</l>
+            <block s="reportListItem">
+              <l>1</l>
+              <block s="reportListItem">
+                <l>2</l>
+                <block s="reportListItem">
+                  <l>2</l>
+                  <block s="reportApplyExtension">
+                    <l>var_get(name)</l>
+                    <list>
+                      <l>📦</l>
+                    </list>
+                  </block>
+                </block>
+              </block>
+            </block>
+          </block>
+        </block>
+        <script>
+          <block s="doAddToList">
+            <block s="reportNewList">
+              <list>
+                <block s="reportListItem">
+                  <l>2</l>
+                  <block s="reportListItem">
+                    <l>1</l>
+                    <block var="item"/>
+                  </block>
+                </block>
+                <block var="item"/>
+              </list>
+            </block>
+            <block var="a"/>
+          </block>
+        </script>
+      </block>
+      <block s="doReport">
+        <block var="a"/>
+      </block>
+    </script>
+    <scripts>
+      <comment x="469" y="78.69999999999999" w="244" collapsed="false">TODO:&#xD;&#xD;- List packages from multiple repositories</comment>
+    </scripts>
+  </block-definition>
+  <block-definition s="📦Install/update package from %&apos;install_type&apos; %&apos;arg1&apos;" type="command" category="Snapkg">
+    <variables>
+      <list struct="atomic" id="152">pkg_sources,pkg_sources_i,debug,source,pkg,pkg_name,start_time,pkg_version,pkg_author,installed_i</list>
+    </variables>
+    <header></header>
+    <code></code>
+    <translations></translations>
+    <inputs>
+      <input type="%s" readonly="true">URL<options>URL&#xD;JSON&#xD;List&#xD;Name</options>
+      </input>
+      <input type="%s">https://raw.githubusercontent.com/elfin8er/Snapkg/master/packages/snapkg/index.json</input>
+    </inputs>
+    <script>
+      <block s="doSetVar">
+        <l>debug</l>
+        <block s="reportBoolean">
+          <l>
+            <bool>true</bool>
+          </l>
+        </block>
+      </block>
+      <block s="doIf">
+        <block var="debug"/>
+        <script>
+          <block s="doIf">
+            <block s="reportNot">
+              <block s="reportListContainsItem">
+                <block s="reportApplyExtension">
+                  <l>var_names(scope)</l>
+                  <list>
+                    <l>global</l>
+                  </list>
+                </block>
+                <l>📦log</l>
+              </block>
+            </block>
+            <script>
+              <block s="doApplyExtension">
+                <l>var_declare(scope, name)</l>
+                <list>
+                  <l>global</l>
+                  <l>📦log</l>
+                </list>
+              </block>
+              <block s="doApplyExtension">
+                <l>var_set(name, val)</l>
+                <list>
+                  <l>📦log</l>
+                  <block s="reportNewList">
+                    <list></list>
+                  </block>
+                </list>
+              </block>
+            </script>
+            <list></list>
+          </block>
+          <block s="doIf">
+            <block s="reportNot">
+              <block s="reportApplyExtension">
+                <l>var_showing(name)?</l>
+                <list>
+                  <l>📦log</l>
+                </list>
+              </block>
+            </block>
+            <script>
+              <block s="doApplyExtension">
+                <l>var_show(name)</l>
+                <list>
+                  <l>📦log</l>
+                </list>
+              </block>
+            </script>
+            <list></list>
+          </block>
+        </script>
+        <list></list>
+      </block>
+      <block s="doIf">
+        <block s="reportVariadicEquals">
+          <list>
+            <block var="install_type"/>
+            <l>JSON</l>
+          </list>
+        </block>
+        <script>
+          <custom-block s="📦Install package from %s %s">
+            <l>List</l>
+            <block s="reportTextSplit">
+              <block var="arg1"/>
+              <l>
+                <option>json</option>
+              </l>
+            </block>
+            <variables>
+              <variable name="pkg_sources">
+                <l>0</l>
+              </variable>
+              <variable name="pkg_sources_i">
+                <l>0</l>
+              </variable>
+              <variable name="debug">
+                <bool>true</bool>
+              </variable>
+              <variable name="source">
+                <l>0</l>
+              </variable>
+              <variable name="pkg">
+                <list id="229">
+                  <item>
+                    <list struct="atomic" id="230">name,websockets</list>
+                  </item>
+                  <item>
+                    <list struct="atomic" id="231">version,1</list>
+                  </item>
+                  <item>
+                    <list id="232">
+                      <item>
+                        <l>author</l>
+                      </item>
+                      <item>
+                        <list id="233">
+                          <item>
+                            <list struct="atomic" id="234">name,Bailey</list>
+                          </item>
+                          <item>
+                            <list struct="atomic" id="235">username,elfin8er</list>
+                          </item>
+                          <item>
+                            <list struct="atomic" id="236">url,https://snap.berkeley.edu/user?username=elfin8er</list>
+                          </item>
+                        </list>
+                      </item>
+                    </list>
+                  </item>
+                  <item>
+                    <list id="237">
+                      <item>
+                        <l>sources</l>
+                      </item>
+                      <item>
+                        <list id="238">
+                          <item>
+                            <list id="239">
+                              <item>
+                                <list struct="atomic" id="240">url,https://raw.githubusercontent.com/elfin8er/Snapkg/master/packages/websockets/blocks/sensing/blocks.xml</list>
+                              </item>
+                              <item>
+                                <list id="241">
+                                  <item>
+                                    <l>provides</l>
+                                  </item>
+                                  <item>
+                                    <list id="242">
+                                      <item>
+                                        <list id="243">
+                                          <item>
+                                            <list struct="atomic" id="244">s,new WebSocket ( %&amp;apos;url&amp;apos; )</list>
+                                          </item>
+                                          <item>
+                                            <list struct="atomic" id="245">type,reporter</list>
+                                          </item>
+                                          <item>
+                                            <list struct="atomic" id="246">category,sensing</list>
+                                          </item>
+                                        </list>
+                                      </item>
+                                      <item>
+                                        <list id="247">
+                                          <item>
+                                            <list struct="atomic" id="248">s,%&amp;apos;ws&amp;apos; .on %&amp;apos;event&amp;apos; do %&amp;apos;callback&amp;apos;</list>
+                                          </item>
+                                          <item>
+                                            <list struct="atomic" id="249">type,command</list>
+                                          </item>
+                                          <item>
+                                            <list struct="atomic" id="250">category,sensing</list>
+                                          </item>
+                                        </list>
+                                      </item>
+                                      <item>
+                                        <list id="251">
+                                          <item>
+                                            <list struct="atomic" id="252">s,%&amp;apos;ws&amp;apos; .send ( %&amp;apos;message&amp;apos; )</list>
+                                          </item>
+                                          <item>
+                                            <list struct="atomic" id="253">type,command</list>
+                                          </item>
+                                          <item>
+                                            <list struct="atomic" id="254">category,sensing</list>
+                                          </item>
+                                        </list>
+                                      </item>
+                                      <item>
+                                        <list id="255">
+                                          <item>
+                                            <list struct="atomic" id="256">s,%&amp;apos;ws&amp;apos; .close</list>
+                                          </item>
+                                          <item>
+                                            <list struct="atomic" id="257">type,command</list>
+                                          </item>
+                                          <item>
+                                            <list struct="atomic" id="258">category,sensing</list>
+                                          </item>
+                                        </list>
+                                      </item>
+                                    </list>
+                                  </item>
+                                </list>
+                              </item>
+                            </list>
+                          </item>
+                        </list>
+                      </item>
+                    </list>
+                  </item>
+                </list>
+              </variable>
+              <variable name="pkg_name">
+                <l>websockets</l>
+              </variable>
+              <variable name="start_time">
+                <l>0</l>
+              </variable>
+              <variable name="pkg_version">
+                <l>1</l>
+              </variable>
+              <variable name="pkg_author">
+                <ref id="233"></ref>
+              </variable>
+              <variable name="installed_i">
+                <l>0</l>
+              </variable>
+            </variables>
+          </custom-block>
+        </script>
+        <list>
+          <block s="reportVariadicEquals">
+            <list>
+              <block var="install_type"/>
+              <l>URL</l>
+            </list>
+          </block>
+          <script>
+            <block s="doSetVar">
+              <l>start_time</l>
+              <block s="reportDate">
+                <l>
+                  <option>time in milliseconds</option>
+                </l>
+              </block>
+            </block>
+            <block s="doAddToList">
+              <block s="reportJoinWords">
+                <list>
+                  <l>Downloading </l>
+                  <block var="arg1"/>
+                </list>
+              </block>
+              <block s="reportApplyExtension">
+                <l>var_get(name)</l>
+                <list>
+                  <l>📦log</l>
+                </list>
+              </block>
+            </block>
+            <custom-block s="📦Install package from %s %s">
+              <l>JSON</l>
+              <block s="reportURL">
+                <block var="arg1"/>
+              </block>
+              <variables>
+                <variable name="pkg_sources">
+                  <l>0</l>
+                </variable>
+                <variable name="pkg_sources_i">
+                  <l>0</l>
+                </variable>
+                <variable name="debug">
+                  <bool>true</bool>
+                </variable>
+                <variable name="source">
+                  <l>0</l>
+                </variable>
+                <variable name="pkg">
+                  <l>0</l>
+                </variable>
+                <variable name="pkg_name">
+                  <l>0</l>
+                </variable>
+                <variable name="start_time">
+                  <l>0</l>
+                </variable>
+                <variable name="pkg_version">
+                  <l>0</l>
+                </variable>
+                <variable name="pkg_author">
+                  <l>0</l>
+                </variable>
+                <variable name="installed_i">
+                  <l>0</l>
+                </variable>
+              </variables>
+            </custom-block>
+          </script>
+          <block s="reportVariadicEquals">
+            <list>
+              <block var="install_type"/>
+              <l>List</l>
+            </list>
+          </block>
+          <script>
+            <block s="doSetVar">
+              <l>pkg</l>
+              <block var="arg1"/>
+            </block>
+            <block s="doAddToList">
+              <block var="pkg"/>
+              <block s="reportApplyExtension">
+                <l>var_get(name)</l>
+                <list>
+                  <l>📦log</l>
+                </list>
+              </block>
+            </block>
+            <block s="doSetVar">
+              <l>pkg_name</l>
+              <block s="reportListItem">
+                <l>2</l>
+                <block s="reportListItem">
+                  <l>1</l>
+                  <block var="pkg"/>
+                </block>
+              </block>
+            </block>
+            <block s="doSetVar">
+              <l>pkg_version</l>
+              <block s="reportListItem">
+                <l>2</l>
+                <block s="reportListItem">
+                  <l>2</l>
+                  <block var="pkg"/>
+                </block>
+              </block>
+            </block>
+            <block s="doSetVar">
+              <l>pkg_author</l>
+              <block s="reportListItem">
+                <l>2</l>
+                <block s="reportListItem">
+                  <l>3</l>
+                  <block var="pkg"/>
+                </block>
+              </block>
+            </block>
+            <block s="doDeclareVariables">
+              <list>
+                <l>found</l>
+              </list>
+            </block>
+            <block s="doSetVar">
+              <l>found</l>
+              <block s="reportBoolean">
+                <l>
+                  <bool>false</bool>
+                </l>
+              </block>
+            </block>
+            <block s="doForEach">
+              <l>item</l>
+              <block s="reportListItem">
+                <l>2</l>
+                <block s="reportListItem">
+                  <l>1</l>
+                  <block s="reportApplyExtension">
+                    <l>var_get(name)</l>
+                    <list>
+                      <l>📦</l>
+                    </list>
+                  </block>
+                </block>
+              </block>
+              <script>
+                <block s="doAddToList">
+                  <block var="item"/>
+                  <block s="reportApplyExtension">
+                    <l>var_get(name)</l>
+                    <list>
+                      <l>📦log</l>
+                    </list>
+                  </block>
+                </block>
+                <block s="doIf">
+                  <block s="reportVariadicEquals">
+                    <list>
+                      <block s="reportListItem">
+                        <l>2</l>
+                        <block s="reportListItem">
+                          <l>1</l>
+                          <block var="item"/>
+                        </block>
+                      </block>
+                      <block var="pkg_name"/>
+                    </list>
+                  </block>
+                  <script>
+                    <block s="doSetVar">
+                      <l>found</l>
+                      <block s="reportBoolean">
+                        <l>
+                          <bool>true</bool>
+                        </l>
+                      </block>
+                    </block>
+                    <block s="doAddToList">
+                      <block s="reportJoinWords">
+                        <list>
+                          <l>Package &apos;</l>
+                          <block s="reportListItem">
+                            <l>2</l>
+                            <block s="reportListItem">
+                              <l>1</l>
+                              <block var="item"/>
+                            </block>
+                          </block>
+                          <l>&apos; is already installed.</l>
+                        </list>
+                      </block>
+                      <block s="reportApplyExtension">
+                        <l>var_get(name)</l>
+                        <list>
+                          <l>📦log</l>
+                        </list>
+                      </block>
+                    </block>
+                    <block s="doIf">
+                      <block s="reportVariadicGreaterThan">
+                        <list>
+                          <block var="pkg_version"/>
+                          <block s="reportListItem">
+                            <l>2</l>
+                            <block s="reportListItem">
+                              <l>2</l>
+                              <block var="item"/>
+                            </block>
+                          </block>
+                        </list>
+                      </block>
+                      <script>
+                        <block s="doAddToList">
+                          <block s="reportJoinWords">
+                            <list>
+                              <l>Update available! Installing </l>
+                              <block var="pkg_name"/>
+                              <l> vers </l>
+                              <block var="pkg_version"/>
+                              <l> by </l>
+                              <block s="reportListItem">
+                                <l>2</l>
+                                <block s="reportListItem">
+                                  <l>1</l>
+                                  <block var="pkg_author"/>
+                                </block>
+                              </block>
+                            </list>
+                          </block>
+                          <block s="reportApplyExtension">
+                            <l>var_get(name)</l>
+                            <list>
+                              <l>📦log</l>
+                            </list>
+                          </block>
+                        </block>
+                        <custom-block s="📦Import package %s">
+                          <block var="pkg"/>
+                          <variables>
+                            <variable name="pkg_sources">
+                              <l>0</l>
+                            </variable>
+                            <variable name="source">
+                              <l>0</l>
+                            </variable>
+                          </variables>
+                        </custom-block>
+                        <custom-block s="📦Add package %s">
+                          <block var="pkg"/>
+                          <variables>
+                            <variable name="pkg_name">
+                              <l>0</l>
+                            </variable>
+                          </variables>
+                        </custom-block>
+                      </script>
+                      <list></list>
+                    </block>
+                    <block s="doAddToList">
+                      <block s="reportJoinWords">
+                        <list>
+                          <l>Done in </l>
+                          <block s="reportJoinWords">
+                            <list>
+                              <block s="reportDifference">
+                                <block s="reportDate">
+                                  <l>
+                                    <option>time in milliseconds</option>
+                                  </l>
+                                </block>
+                                <block var="start_time"/>
+                              </block>
+                              <l> ms</l>
+                            </list>
+                          </block>
+                        </list>
+                      </block>
+                      <block s="reportApplyExtension">
+                        <l>var_get(name)</l>
+                        <list>
+                          <l>📦log</l>
+                        </list>
+                      </block>
+                    </block>
+                    <block s="doStopThis">
+                      <l>
+                        <option>this script</option>
+                      </l>
+                    </block>
+                  </script>
+                  <list></list>
+                </block>
+              </script>
+            </block>
+            <block s="doIf">
+              <block s="reportNot">
+                <block var="found"/>
+              </block>
+              <script>
+                <custom-block s="📦Import package %s">
+                  <block var="pkg"/>
+                  <variables>
+                    <variable name="pkg_sources">
+                      <list id="490">
+                        <item>
+                          <list id="491">
+                            <item>
+                              <list struct="atomic" id="492">url,https://raw.githubusercontent.com/elfin8er/Snapkg/master/packages/websockets/blocks/sensing/blocks.xml</list>
+                            </item>
+                            <item>
+                              <list id="493">
+                                <item>
+                                  <l>provides</l>
+                                </item>
+                                <item>
+                                  <list id="494">
+                                    <item>
+                                      <list id="495">
+                                        <item>
+                                          <list struct="atomic" id="496">s,new WebSocket ( %&amp;apos;url&amp;apos; )</list>
+                                        </item>
+                                        <item>
+                                          <list struct="atomic" id="497">type,reporter</list>
+                                        </item>
+                                        <item>
+                                          <list struct="atomic" id="498">category,sensing</list>
+                                        </item>
+                                      </list>
+                                    </item>
+                                    <item>
+                                      <list id="499">
+                                        <item>
+                                          <list struct="atomic" id="500">s,%&amp;apos;ws&amp;apos; .on %&amp;apos;event&amp;apos; do %&amp;apos;callback&amp;apos;</list>
+                                        </item>
+                                        <item>
+                                          <list struct="atomic" id="501">type,command</list>
+                                        </item>
+                                        <item>
+                                          <list struct="atomic" id="502">category,sensing</list>
+                                        </item>
+                                      </list>
+                                    </item>
+                                    <item>
+                                      <list id="503">
+                                        <item>
+                                          <list struct="atomic" id="504">s,%&amp;apos;ws&amp;apos; .send ( %&amp;apos;message&amp;apos; )</list>
+                                        </item>
+                                        <item>
+                                          <list struct="atomic" id="505">type,command</list>
+                                        </item>
+                                        <item>
+                                          <list struct="atomic" id="506">category,sensing</list>
+                                        </item>
+                                      </list>
+                                    </item>
+                                    <item>
+                                      <list id="507">
+                                        <item>
+                                          <list struct="atomic" id="508">s,%&amp;apos;ws&amp;apos; .close</list>
+                                        </item>
+                                        <item>
+                                          <list struct="atomic" id="509">type,command</list>
+                                        </item>
+                                        <item>
+                                          <list struct="atomic" id="510">category,sensing</list>
+                                        </item>
+                                      </list>
+                                    </item>
+                                  </list>
+                                </item>
+                              </list>
+                            </item>
+                          </list>
+                        </item>
+                      </list>
+                    </variable>
+                    <variable name="source">
+                      <l>&lt;blocks app="Snap! 9.0, https://snap.berkeley.edu" version="2"&gt;&#xD;  &lt;block-definition s="new WebSocket ( %&amp;apos;url&amp;apos; )" type="reporter" category="sensing"&gt;&#xD;    &lt;header&gt;&lt;/header&gt;&#xD;    &lt;code&gt;&lt;/code&gt;&#xD;    &lt;translations&gt;&lt;/translations&gt;&#xD;    &lt;inputs&gt;&#xD;      &lt;input type="%s"&gt;wss://ws.postman-echo.com/raw&lt;/input&gt;&#xD;    &lt;/inputs&gt;&#xD;    &lt;script&gt;&#xD;      &lt;block s="doReport"&gt;&#xD;        &lt;block s="evaluate"&gt;&#xD;          &lt;block s="reportJSFunction"&gt;&#xD;            &lt;list&gt;&#xD;              &lt;l&gt;url&lt;/l&gt;&#xD;            &lt;/list&gt;&#xD;            &lt;l&gt;return new WebSocket(url)&lt;/l&gt;&#xD;          &lt;/block&gt;&#xD;          &lt;list&gt;&#xD;            &lt;block var="url"/&gt;&#xD;          &lt;/list&gt;&#xD;        &lt;/block&gt;&#xD;      &lt;/block&gt;&#xD;    &lt;/script&gt;&#xD;  &lt;/block-definition&gt;&#xD;  &lt;block-definition s="%&amp;apos;ws&amp;apos; .send ( %&amp;apos;message&amp;apos; )" type="command" category="sensing"&gt;&#xD;    &lt;header&gt;&lt;/header&gt;&#xD;    &lt;code&gt;&lt;/code&gt;&#xD;    &lt;translations&gt;&lt;/translations&gt;&#xD;    &lt;inputs&gt;&#xD;      &lt;input type="%s"&gt;ws&lt;/input&gt;&#xD;      &lt;input type="%s"&gt;&lt;/input&gt;&#xD;    &lt;/inputs&gt;&#xD;    &lt;script&gt;&#xD;      &lt;block s="doReport"&gt;&#xD;        &lt;block s="evaluate"&gt;&#xD;          &lt;block s="reportJSFunction"&gt;&#xD;            &lt;list&gt;&#xD;              &lt;l&gt;ws&lt;/l&gt;&#xD;              &lt;l&gt;message&lt;/l&gt;&#xD;            &lt;/list&gt;&#xD;            &lt;l&gt;ws.send(message);&lt;/l&gt;&#xD;          &lt;/block&gt;&#xD;          &lt;list&gt;&#xD;            &lt;block var="ws"/&gt;&#xD;            &lt;block var="message"/&gt;&#xD;          &lt;/list&gt;&#xD;        &lt;/block&gt;&#xD;      &lt;/block&gt;&#xD;    &lt;/script&gt;&#xD;  &lt;/block-definition&gt;&#xD;  &lt;block-definition s="%&amp;apos;ws&amp;apos; .on %&amp;apos;event&amp;apos; do %&amp;apos;callback&amp;apos;" type="command" category="sensing"&gt;&#xD;    &lt;header&gt;&lt;/header&gt;&#xD;    &lt;code&gt;&lt;/code&gt;&#xD;    &lt;translations&gt;&lt;/translations&gt;&#xD;    &lt;inputs&gt;&#xD;      &lt;input type="%s"&gt;ws&lt;/input&gt;&#xD;      &lt;input type="%s"&gt;message&lt;options&gt;message&amp;#xD;open&amp;#xD;close&amp;#xD;error&lt;/options&gt;&lt;/input&gt;&#xD;      &lt;input type="%cmdRing"&gt;&lt;/input&gt;&#xD;    &lt;/inputs&gt;&#xD;    &lt;script&gt;&#xD;      &lt;block s="doIf"&gt;&#xD;        &lt;block s="reportVariadicEquals"&gt;&#xD;          &lt;list&gt;&#xD;            &lt;block var="event"/&gt;&#xD;            &lt;l&gt;open&lt;/l&gt;&#xD;          &lt;/list&gt;&#xD;        &lt;/block&gt;&#xD;        &lt;script&gt;&#xD;          &lt;block s="doRun"&gt;&#xD;            &lt;block s="reportJSFunction"&gt;&#xD;              &lt;list&gt;&#xD;                &lt;l&gt;ws&lt;/l&gt;&#xD;                &lt;l&gt;cb&lt;/l&gt;&#xD;              &lt;/list&gt;&#xD;              &lt;l&gt;ws.onopen = (event) =&amp;gt; {&amp;#xD;  console.log(event);&amp;#xD;  const process = new Process(null,cb.receiver, null, true);&amp;#xD;  process.initializeFor(cb, new List([event]));&amp;#xD;  cb.receiver.parent.threads.processes.push(process);&amp;#xD;};&lt;/l&gt;&#xD;            &lt;/block&gt;&#xD;            &lt;list&gt;&#xD;              &lt;block var="ws"/&gt;&#xD;              &lt;block var="callback"/&gt;&#xD;            &lt;/list&gt;&#xD;          &lt;/block&gt;&#xD;        &lt;/script&gt;&#xD;        &lt;list&gt;&#xD;          &lt;block s="reportVariadicEquals"&gt;&#xD;            &lt;list&gt;&#xD;              &lt;block var="event"/&gt;&#xD;              &lt;l&gt;close&lt;/l&gt;&#xD;            &lt;/list&gt;&#xD;          &lt;/block&gt;&#xD;          &lt;script&gt;&#xD;            &lt;block s="doRun"&gt;&#xD;              &lt;block s="reportJSFunction"&gt;&#xD;                &lt;list&gt;&#xD;                  &lt;l&gt;ws&lt;/l&gt;&#xD;                  &lt;l&gt;cb&lt;/l&gt;&#xD;                &lt;/list&gt;&#xD;                &lt;l&gt;ws.onclose = (event) =&amp;gt; {&amp;#xD;  console.log(event);&amp;#xD;  const process = new Process(null,cb.receiver, null, true);&amp;#xD;  process.initializeFor(cb, new List([event]));&amp;#xD;  cb.receiver.parent.threads.processes.push(process);&amp;#xD;};&lt;/l&gt;&#xD;              &lt;/block&gt;&#xD;              &lt;list&gt;&#xD;                &lt;block var="ws"/&gt;&#xD;                &lt;block var="callback"/&gt;&#xD;              &lt;/list&gt;&#xD;            &lt;/block&gt;&#xD;          &lt;/script&gt;&#xD;          &lt;block s="reportVariadicEquals"&gt;&#xD;            &lt;list&gt;&#xD;              &lt;block var="event"/&gt;&#xD;              &lt;l&gt;message&lt;/l&gt;&#xD;            &lt;/list&gt;&#xD;          &lt;/block&gt;&#xD;          &lt;script&gt;&#xD;            &lt;block s="doRun"&gt;&#xD;              &lt;block s="reportJSFunction"&gt;&#xD;                &lt;list&gt;&#xD;                  &lt;l&gt;ws&lt;/l&gt;&#xD;                  &lt;l&gt;cb&lt;/l&gt;&#xD;                &lt;/list&gt;&#xD;                &lt;l&gt;ws.onmessage = (event) =&amp;gt; {&amp;#xD;  console.log(event);&amp;#xD;  const process = new Process(null,cb.receiver, null, true);&amp;#xD;  process.initializeFor(cb, new List([event.data]));&amp;#xD;  cb.receiver.parent.threads.processes.push(process);&amp;#xD;};&lt;/l&gt;&#xD;              &lt;/block&gt;&#xD;              &lt;list&gt;&#xD;                &lt;block var="ws"/&gt;&#xD;                &lt;block var="callback"/&gt;&#xD;              &lt;/list&gt;&#xD;            &lt;/block&gt;&#xD;          &lt;/script&gt;&#xD;          &lt;block s="reportVariadicEquals"&gt;&#xD;            &lt;list&gt;&#xD;              &lt;l&gt;&lt;/l&gt;&#xD;              &lt;l&gt;error&lt;/l&gt;&#xD;            &lt;/list&gt;&#xD;          &lt;/block&gt;&#xD;          &lt;script&gt;&lt;/script&gt;&#xD;        &lt;/list&gt;&#xD;      &lt;/block&gt;&#xD;    &lt;/script&gt;&#xD;  &lt;/block-definition&gt;&#xD;  &lt;block-definition s="%&amp;apos;ws&amp;apos; .close" type="command" category="sensing"&gt;&#xD;    &lt;header&gt;&lt;/header&gt;&#xD;    &lt;code&gt;&lt;/code&gt;&#xD;    &lt;translations&gt;&lt;/translations&gt;&#xD;    &lt;inputs&gt;&#xD;      &lt;input type="%s"&gt;ws&lt;/input&gt;&#xD;    &lt;/inputs&gt;&#xD;    &lt;script&gt;&#xD;      &lt;block s="doRun"&gt;&#xD;        &lt;block s="reportJSFunction"&gt;&#xD;          &lt;list&gt;&#xD;            &lt;l&gt;ws&lt;/l&gt;&#xD;          &lt;/list&gt;&#xD;          &lt;l&gt;ws.close();&lt;/l&gt;&#xD;        &lt;/block&gt;&#xD;        &lt;list&gt;&#xD;          &lt;block var="ws"/&gt;&#xD;        &lt;/list&gt;&#xD;      &lt;/block&gt;&#xD;    &lt;/script&gt;&#xD;  &lt;/block-definition&gt;&#xD;&lt;/blocks&gt;</l>
+                    </variable>
+                  </variables>
+                </custom-block>
+                <custom-block s="📦Add package %s">
+                  <block var="pkg"/>
+                  <variables>
+                    <variable name="pkg_name">
+                      <l>websockets</l>
+                    </variable>
+                  </variables>
+                </custom-block>
+              </script>
+              <list></list>
+            </block>
+          </script>
+        </list>
+      </block>
+    </script>
+    <scripts>
+      <comment x="594" y="109.69999999999999" w="185" collapsed="false">&#xD;&#xD;TODO:&#xD;X Check if package is already installed&#xD;- Resolve dependencies&#xD;- Warn user about untrusted code&#xD;- Handle sources other than xml&#xD;</comment>
+    </scripts>
+  </block-definition>
+  <block-definition s="📦Uninstall package from %&apos;type&apos; %&apos;URL&apos;" type="command" category="Snapkg">
+    <header></header>
+    <code></code>
+    <translations></translations>
+    <inputs>
+      <input type="%s" readonly="true">URL<options>URL&#xD;JSON</options>
+      </input>
+      <input type="%s"></input>
+    </inputs>
+    <script>
+      <block s="doIf">
+        <block s="reportVariadicEquals">
+          <list>
+            <block var="type"/>
+            <l>JSON</l>
+          </list>
+        </block>
+        <script>
+          <custom-block s="📦Delete package from %s %s">
+            <l>JSON</l>
+            <block var="URL"/>
+          </custom-block>
+          <custom-block s="📦Remove package from %s %s">
+            <l>JSON</l>
+            <block var="URL"/>
+          </custom-block>
+        </script>
+        <list>
+          <block s="reportVariadicEquals">
+            <list>
+              <block var="type"/>
+              <l>URL</l>
+            </list>
+          </block>
+          <script>
+            <custom-block s="📦Uninstall package from %s %s">
+              <l>JSON</l>
+              <block s="reportTextSplit">
+                <block s="reportURL">
+                  <block var="URL"/>
+                </block>
+                <l>
+                  <option>json</option>
+                </l>
+              </block>
+            </custom-block>
+          </script>
+        </list>
+      </block>
+    </script>
+  </block-definition>
+  <block-definition s="📦List installed packages" type="reporter" category="Snapkg">
+    <variables>
+      <list struct="atomic" id="551">a</list>
+    </variables>
+    <header></header>
+    <code></code>
+    <translations></translations>
+    <inputs></inputs>
+    <script>
+      <block s="doSetVar">
+        <l>a</l>
+        <block s="reportNewList">
+          <list></list>
+        </block>
+      </block>
+      <block s="doForEach">
+        <l>item</l>
+        <block s="reportListItem">
+          <l>2</l>
+          <block s="reportListItem">
+            <l>1</l>
+            <block s="reportApplyExtension">
+              <l>var_get(name)</l>
+              <list>
+                <l>📦</l>
+              </list>
+            </block>
+          </block>
+        </block>
+        <script>
+          <block s="doAddToList">
+            <block s="reportNewList">
+              <list>
+                <block s="reportListItem">
+                  <l>2</l>
+                  <block s="reportListItem">
+                    <l>1</l>
+                    <block var="item"/>
+                  </block>
+                </block>
+                <block var="item"/>
+              </list>
+            </block>
+            <block var="a"/>
+          </block>
+        </script>
+      </block>
+      <block s="doReport">
+        <block var="a"/>
+      </block>
+    </script>
+  </block-definition>
+  <block-definition s="=== Advanced $arrowDown ===" type="reporter" category="Snapkg">
+    <header></header>
+    <code></code>
+    <translations></translations>
+    <inputs></inputs>
+  </block-definition>
+  <block-definition s="📦Add package %&apos;pkg&apos;" type="command" category="Snapkg">
+    <variables>
+      <list struct="atomic" id="593">pkg_name</list>
+    </variables>
+    <header></header>
+    <code></code>
+    <translations></translations>
+    <inputs>
+      <input type="%s">pkg</input>
+    </inputs>
+    <script>
+      <block s="doSetVar">
+        <l>pkg_name</l>
+        <block s="reportListItem">
+          <l>2</l>
+          <block s="reportListItem">
+            <l>1</l>
+            <block var="pkg"/>
+          </block>
+        </block>
+      </block>
+      <block s="doDeclareVariables">
+        <list>
+          <l>i</l>
+          <l>found</l>
+        </list>
+      </block>
+      <block s="doSetVar">
+        <l>i</l>
+        <l>1</l>
+      </block>
+      <block s="doForEach">
+        <l>item</l>
+        <block s="reportListItem">
+          <l>2</l>
+          <block s="reportListItem">
+            <l>1</l>
+            <block s="reportApplyExtension">
+              <l>var_get(name)</l>
+              <list>
+                <l>📦</l>
+              </list>
+            </block>
+          </block>
+        </block>
+        <script>
+          <block s="doIf">
+            <block s="reportVariadicEquals">
+              <list>
+                <block s="reportListItem">
+                  <l>2</l>
+                  <block s="reportListItem">
+                    <l>1</l>
+                    <block var="item"/>
+                  </block>
+                </block>
+                <block var="pkg_name"/>
+              </list>
+            </block>
+            <script>
+              <block s="doReplaceInList">
+                <block var="i"/>
+                <block s="reportListItem">
+                  <l>2</l>
+                  <block s="reportListItem">
+                    <l>1</l>
+                    <block s="reportApplyExtension">
+                      <l>var_get(name)</l>
+                      <list>
+                        <l>📦</l>
+                      </list>
+                    </block>
+                  </block>
+                </block>
+                <block var="pkg"/>
+              </block>
+              <block s="doSetVar">
+                <l>found</l>
+                <block s="reportBoolean">
+                  <l>
+                    <bool>true</bool>
+                  </l>
+                </block>
+              </block>
+              <block s="doStopThis">
+                <l>
+                  <option>this block</option>
+                </l>
+              </block>
+            </script>
+            <list></list>
+          </block>
+          <block s="doChangeVar">
+            <l>i</l>
+            <l>1</l>
+          </block>
+        </script>
+      </block>
+      <block s="doIf">
+        <block s="reportNot">
+          <block var="found"/>
+        </block>
+        <script>
+          <block s="doAddToList">
+            <block var="pkg"/>
+            <block s="reportListItem">
+              <l>2</l>
+              <block s="reportListItem">
+                <l>1</l>
+                <block s="reportApplyExtension">
+                  <l>var_get(name)</l>
+                  <list>
+                    <l>📦</l>
+                  </list>
+                </block>
+              </block>
+            </block>
+          </block>
+        </script>
+        <list></list>
+      </block>
+    </script>
+    <scripts>
+      <comment x="397" y="27.69999999999999" w="176" collapsed="false">Adds a package to the package manager without actually importing it</comment>
+    </scripts>
+  </block-definition>
+  <block-definition s="📦Import package %&apos;pkg&apos;" type="command" category="Snapkg">
+    <variables>
+      <list struct="atomic" id="693">pkg_sources,source</list>
+    </variables>
+    <header></header>
+    <code></code>
+    <translations></translations>
+    <inputs>
+      <input type="%s">pkg</input>
+    </inputs>
+    <script>
+      <block s="doSetVar">
+        <l>pkg_sources</l>
+        <block s="reportListItem">
+          <l>2</l>
+          <block s="reportListItem">
+            <l>4</l>
+            <block var="pkg"/>
+          </block>
+        </block>
+      </block>
+      <block s="doForEach">
+        <l>item</l>
+        <block var="pkg_sources"/>
+        <script>
+          <block s="doAddToList">
+            <block var="item"/>
+            <block s="reportApplyExtension">
+              <l>var_get(name)</l>
+              <list>
+                <l>📦log</l>
+              </list>
+            </block>
+          </block>
+          <block s="doSetVar">
+            <l>source</l>
+            <block s="reportURL">
+              <block s="reportListItem">
+                <l>2</l>
+                <block s="reportListItem">
+                  <l>1</l>
+                  <block var="item"/>
+                </block>
+              </block>
+            </block>
+          </block>
+          <block s="doAddToList">
+            <l>Importing source</l>
+            <block s="reportApplyExtension">
+              <l>var_get(name)</l>
+              <list>
+                <l>📦log</l>
+              </list>
+            </block>
+          </block>
+          <block s="doAddToList">
+            <block var="source"/>
+            <block s="reportApplyExtension">
+              <l>var_get(name)</l>
+              <list>
+                <l>📦log</l>
+              </list>
+            </block>
+          </block>
+          <block s="doRun">
+            <block s="reportJSFunction">
+              <list>
+                <l>xmlString</l>
+              </list>
+              <l>this.parentThatIsA(IDE_Morph).rawOpenBlocksString(xmlString, "block", true)</l>
+            </block>
+            <list>
+              <block var="source"/>
+            </list>
+          </block>
+        </script>
+      </block>
+    </script>
+    <scripts>
+      <script x="51" y="474.53333333333376">
+        <block s="doDeclareVariables">
+          <list>
+            <l>i</l>
+            <l>found</l>
+          </list>
+        </block>
+        <block s="doSetVar">
+          <l>i</l>
+          <l>1</l>
+        </block>
+        <block s="doForEach">
+          <l>item</l>
+          <block s="reportListItem">
+            <l>2</l>
+            <block s="reportListItem">
+              <l>1</l>
+              <block var="📦"/>
+            </block>
+          </block>
+          <script>
+            <block s="doIf">
+              <block s="reportVariadicEquals">
+                <list>
+                  <block s="reportListItem">
+                    <l>2</l>
+                    <block s="reportListItem">
+                      <l>1</l>
+                      <block var="item"/>
+                    </block>
+                  </block>
+                  <block var="pkg_name"/>
+                </list>
+              </block>
+              <script>
+                <block s="doReplaceInList">
+                  <block var="i"/>
+                  <block s="reportListItem">
+                    <l>2</l>
+                    <block s="reportListItem">
+                      <l>1</l>
+                      <block var="📦"/>
+                    </block>
+                  </block>
+                  <block var="pkg"/>
+                </block>
+                <block s="doSetVar">
+                  <l>found</l>
+                  <block s="reportBoolean">
+                    <l>
+                      <bool>true</bool>
+                    </l>
+                  </block>
+                </block>
+                <block s="doStopThis">
+                  <l>
+                    <option>this block</option>
+                  </l>
+                </block>
+              </script>
+              <list></list>
+            </block>
+            <block s="doChangeVar">
+              <l>i</l>
+              <l>1</l>
+            </block>
+          </script>
+        </block>
+        <block s="doIf">
+          <block s="reportNot">
+            <block var="found"/>
+          </block>
+          <script>
+            <block s="doAddToList">
+              <block var="pkg"/>
+              <block s="reportListItem">
+                <l>2</l>
+                <block s="reportListItem">
+                  <l>1</l>
+                  <block var="📦"/>
+                </block>
+              </block>
+            </block>
+          </script>
+          <list></list>
+        </block>
+        <block s="doAddToList">
+          <block s="reportJoinWords">
+            <list>
+              <l>Done in </l>
+              <block s="reportJoinWords">
+                <list>
+                  <block s="reportDifference">
+                    <block s="reportDate">
+                      <l>
+                        <option>time in milliseconds</option>
+                      </l>
+                    </block>
+                    <block var="start_time"/>
+                  </block>
+                  <l> ms</l>
+                </list>
+              </block>
+            </list>
+          </block>
+          <block s="reportApplyExtension">
+            <l>var_get(name)</l>
+            <list>
+              <l>📦log</l>
+            </list>
+          </block>
+        </block>
+      </script>
+      <script x="488" y="118.70000000000005">
+        <block s="doAddToList">
+          <block s="reportJoinWords">
+            <list>
+              <l>Update available! Installing </l>
+              <block var="pkg_name"/>
+              <l> vers </l>
+              <block var="pkg_version"/>
+              <l> by </l>
+              <block s="reportListItem">
+                <l>2</l>
+                <block s="reportListItem">
+                  <l>1</l>
+                  <block var="pkg_author"/>
+                </block>
+              </block>
+            </list>
+          </block>
+          <block s="reportApplyExtension">
+            <l>var_get(name)</l>
+            <list>
+              <l>📦log</l>
+            </list>
+          </block>
+        </block>
+      </script>
+      <comment x="377" y="27.700000000000045" w="193" collapsed="false">Imports a package to the project without adding it to the package manager</comment>
+    </scripts>
+  </block-definition>
+  <block-definition s="📦Remove package from %&apos;type&apos; %&apos;URL&apos;" type="command" category="Snapkg">
+    <comment x="0" y="0" w="90" collapsed="false">Removes a package from the package manager without removing it from the project.</comment>
+    <header></header>
+    <code></code>
+    <translations></translations>
+    <inputs>
+      <input type="%s" readonly="true">URL<options>URL&#xD;JSON</options>
+      </input>
+      <input type="%s"></input>
+    </inputs>
+  </block-definition>
+  <block-definition s="📦Delete package from %&apos;type&apos; %&apos;pkg&apos;" type="command" category="Snapkg">
+    <comment x="0" y="0" w="421.2789062500001" collapsed="false">Deletes the components of a package from the current project. Does not remove the package from the package manager.</comment>
+    <header></header>
+    <code></code>
+    <translations></translations>
+    <inputs>
+      <input type="%s" readonly="true">URL<options>URL&#xD;JSON</options>
+      </input>
+      <input type="%s"></input>
+    </inputs>
+    <script>
+      <block s="doDeclareVariables">
+        <list>
+          <l>b</l>
+        </list>
+      </block>
+      <block s="doForEach">
+        <l>item</l>
+        <block s="reportListItem">
+          <l>2</l>
+          <block s="reportListItem">
+            <l>2</l>
+            <block s="reportListItem">
+              <l>1</l>
+              <block s="reportListItem">
+                <l>2</l>
+                <block s="reportListItem">
+                  <l>4</l>
+                  <block var="pkg"/>
+                </block>
+              </block>
+            </block>
+          </block>
+        </block>
+        <script>
+          <block s="doRun">
+            <block s="reportJSFunction">
+              <list>
+                <l>blocks</l>
+                <l>spec</l>
+                <l>type</l>
+                <l>category</l>
+              </list>
+              <l>function decodeEntities(encodedString) {&#xD;  const parser = new DOMParser();&#xD;  const dom = parser.parseFromString(&apos;&lt;!doctype html&gt;&lt;body&gt;&apos; + encodedString, &apos;text/html&apos;);&#xD;  const decodedString = dom.body.textContent;&#xD;  return decodedString;&#xD;}&#xD;&#xD;spec = decodeEntities(spec);&#xD;&#xD;results = (blocks.contents.filter((block) =&gt; {&#xD;  if(!block.expression.definition) return false;&#xD;  return (&#xD;    block.expression.definition.spec === spec &amp;&amp;&#xD;    block.expression.category === category&#xD;    //TODO: Add block type&#xD;  );&#xD;}));&#xD;&#xD;this.parentThatIsA(IDE_Morph).stage.threads.processes[0].doDeleteBlock(results[0]);</l>
+            </block>
+            <list>
+              <block s="reportGet">
+                <l>
+                  <option>blocks</option>
+                </l>
+              </block>
+              <block s="reportListItem">
+                <l>2</l>
+                <block s="reportListItem">
+                  <l>1</l>
+                  <block var="item"/>
+                </block>
+              </block>
+              <block s="reportListItem">
+                <l>2</l>
+                <block s="reportListItem">
+                  <l>2</l>
+                  <block var="item"/>
+                </block>
+              </block>
+              <block s="reportListItem">
+                <l>2</l>
+                <block s="reportListItem">
+                  <l>3</l>
+                  <block var="item"/>
+                </block>
+              </block>
+            </list>
+          </block>
+        </script>
+      </block>
+    </script>
+  </block-definition>
+  <block-definition s="=== Developers $arrowDown ===" type="reporter" category="Snapkg">
+    <header></header>
+    <code></code>
+    <translations></translations>
+    <inputs></inputs>
+  </block-definition>
+  <block-definition s="📦Initialize" type="command" category="Snapkg">
+    <header></header>
+    <code></code>
+    <translations></translations>
+    <inputs></inputs>
+    <script>
+      <block s="doIf">
+        <block s="reportNot">
+          <block s="reportListContainsItem">
+            <block s="reportApplyExtension">
+              <l>var_names(scope)</l>
+              <list>
+                <l>global</l>
+              </list>
+            </block>
+            <l>📦</l>
+          </block>
+        </block>
+        <script>
+          <block s="doApplyExtension">
+            <l>var_declare(scope, name)</l>
+            <list>
+              <l>global</l>
+              <l>📦</l>
+            </list>
+          </block>
+          <block s="doApplyExtension">
+            <l>var_set(name, val)</l>
+            <list>
+              <l>📦</l>
+              <block s="reportNewList">
+                <list>
+                  <block s="reportNewList">
+                    <list>
+                      <l>installed</l>
+                      <block s="reportNewList">
+                        <list></list>
+                      </block>
+                    </list>
+                  </block>
+                  <block s="reportNewList">
+                    <list>
+                      <l>repositories</l>
+                      <block s="reportNewList">
+                        <list></list>
+                      </block>
+                    </list>
+                  </block>
+                </list>
+              </block>
+            </list>
+          </block>
+        </script>
+        <list></list>
+      </block>
+      <block s="doIf">
+        <block s="reportNot">
+          <block s="reportListContainsItem">
+            <block s="reportApplyExtension">
+              <l>var_names(scope)</l>
+              <list>
+                <l>global</l>
+              </list>
+            </block>
+            <l>📦log</l>
+          </block>
+        </block>
+        <script>
+          <block s="doApplyExtension">
+            <l>var_declare(scope, name)</l>
+            <list>
+              <l>global</l>
+              <l>📦log</l>
+            </list>
+          </block>
+          <block s="doApplyExtension">
+            <l>var_set(name, val)</l>
+            <list>
+              <l>📦log</l>
+              <block s="reportNewList">
+                <list></list>
+              </block>
+            </list>
+          </block>
+        </script>
+        <list></list>
+      </block>
+    </script>
+  </block-definition>
+  <block-definition s="Source %&apos;url&apos; provides: %&apos;blocks&apos;" type="reporter" category="Snapkg">
+    <variables>
+      <list struct="atomic" id="1145">block_list</list>
+    </variables>
+    <header></header>
+    <code></code>
+    <translations></translations>
+    <inputs>
+      <input type="%s">https://raw.githubusercontent.com/elfin8er/Snapkg/development/repositories/default/packages/snapkg/blocks/Snapkg/blocks.xml</input>
+      <input type="%mult%cmdRing"></input>
+    </inputs>
+    <script>
+      <block s="doSetVar">
+        <l>block_list</l>
+        <block s="reportNewList">
+          <list></list>
+        </block>
+      </block>
+      <block s="doForEach">
+        <l>block</l>
+        <block var="blocks"/>
+        <script>
+          <block s="doAddToList">
+            <custom-block s="Block spec: %s , category: %s">
+              <block s="evaluate">
+                <block s="reportJSFunction">
+                  <list>
+                    <l>block</l>
+                  </list>
+                  <l>console.log(block);&#xD;return block.expression.definition.spec;</l>
+                </block>
+                <list>
+                  <block var="block"/>
+                </list>
+              </block>
+              <block s="evaluate">
+                <block s="reportJSFunction">
+                  <list>
+                    <l>block</l>
+                  </list>
+                  <l>return block.expression.definition.category;</l>
+                </block>
+                <list>
+                  <block var="block"/>
+                </list>
+              </block>
+            </custom-block>
+            <block var="block_list"/>
+          </block>
+        </script>
+      </block>
+      <block s="doReport">
+        <block s="reportNewList">
+          <list>
+            <block s="reportNewList">
+              <list>
+                <l>url</l>
+                <block var="url"/>
+              </list>
+            </block>
+            <block s="reportNewList">
+              <list>
+                <l>provides</l>
+                <block var="block_list"/>
+              </list>
+            </block>
+          </list>
+        </block>
+      </block>
+    </script>
+    <scripts>
+      <script x="405.7964843750001" y="348.7999999999998">
+        <block s="reportNewList">
+          <list>
+            <block s="reportNewList">
+              <list>
+                <l></l>
+              </list>
+            </block>
+          </list>
+        </block>
+      </script>
+    </scripts>
+  </block-definition>
+  <block-definition s="Package %&apos;name&apos; , vers: %&apos;version&apos; , authors: %&apos;authors&apos; , sources: %&apos;sources&apos; , schema %&apos;schema&apos;" type="reporter" category="Snapkg">
+    <header></header>
+    <code></code>
+    <translations></translations>
+    <inputs>
+      <input type="%txt">snapkg</input>
+      <input type="%n">0.11</input>
+      <input type="%l"></input>
+      <input type="%l"></input>
+      <input type="%n" readonly="true">0.1</input>
+    </inputs>
+    <script>
+      <block s="doReport">
+        <block s="reportNewList">
+          <list>
+            <block s="reportNewList">
+              <list>
+                <l>schema</l>
+                <block var="schema"/>
+              </list>
+            </block>
+            <block s="reportNewList">
+              <list>
+                <l>name</l>
+                <block var="name"/>
+              </list>
+            </block>
+            <block s="reportNewList">
+              <list>
+                <l>version</l>
+                <block var="version"/>
+              </list>
+            </block>
+            <block s="reportNewList">
+              <list>
+                <l>authors</l>
+                <block var="authors"/>
+              </list>
+            </block>
+            <block s="reportNewList">
+              <list>
+                <l>sources</l>
+                <block var="sources"/>
+              </list>
+            </block>
+          </list>
+        </block>
+      </block>
+    </script>
+  </block-definition>
+  <block-definition s="Author %&apos;name&apos; ( %&apos;username&apos; ) : %&apos;URL&apos;" type="reporter" category="Snapkg">
+    <header></header>
+    <code></code>
+    <translations></translations>
+    <inputs>
+      <input type="%s"></input>
+      <input type="%s"></input>
+      <input type="%s"></input>
+    </inputs>
+    <script>
+      <block s="doReport">
+        <block s="reportNewList">
+          <list>
+            <block s="reportNewList">
+              <list>
+                <l>name</l>
+                <block var="name"/>
+              </list>
+            </block>
+            <block s="reportNewList">
+              <list>
+                <l>username</l>
+                <block var="username"/>
+              </list>
+            </block>
+            <block s="reportNewList">
+              <list>
+                <l>url</l>
+                <block var="URL"/>
+              </list>
+            </block>
+          </list>
+        </block>
+      </block>
+    </script>
+  </block-definition>
+  <block-definition s="Block spec: %&apos;spec&apos; , category: %&apos;category&apos;" type="reporter" category="Snapkg">
+    <header></header>
+    <code></code>
+    <translations></translations>
+    <inputs>
+      <input type="%s"></input>
+      <input type="%s"></input>
+    </inputs>
+    <script>
+      <block s="doReport">
+        <block s="reportNewList">
+          <list>
+            <block s="reportNewList">
+              <list>
+                <l>spec</l>
+                <block var="spec"/>
+              </list>
+            </block>
+            <block s="reportNewList">
+              <list>
+                <l>category</l>
+                <block var="category"/>
+              </list>
+            </block>
+          </list>
+        </block>
+      </block>
+    </script>
+  </block-definition>
+  <block-definition s="Repo %&apos;name&apos; vers %&apos;vers&apos; %&apos;url&apos; %&apos;schema&apos; %&apos;packages&apos;" type="reporter" category="Snapkg">
+    <header></header>
+    <code></code>
+    <translations></translations>
+    <inputs>
+      <input type="%s">Snapkg</input>
+      <input type="%n">1</input>
+      <input type="%txt">https://raw.githubusercontent.com/elfin8er/Snapkg/development/repositories/default/index.json</input>
+      <input type="%n" readonly="true">0.1</input>
+      <input type="%s"></input>
+    </inputs>
+    <script>
+      <block s="doReport">
+        <block s="reportNewList">
+          <list>
+            <block s="reportNewList">
+              <list>
+                <l>schema</l>
+                <block var="schema"/>
+              </list>
+            </block>
+            <block s="reportNewList">
+              <list>
+                <l>name</l>
+                <block var="name"/>
+              </list>
+            </block>
+            <block s="reportNewList">
+              <list>
+                <l>version</l>
+                <block var="vers"/>
+              </list>
+            </block>
+            <block s="reportNewList">
+              <list>
+                <l>url</l>
+                <block var="url"/>
+              </list>
+            </block>
+            <block s="reportNewList">
+              <list>
+                <l>packages</l>
+                <block var="packages"/>
+              </list>
+            </block>
+          </list>
+        </block>
+      </block>
+    </script>
+    <scripts>
+      <script x="335.6441406250001" y="207.33333333333326">
+        <block var="url"/>
+      </script>
+    </scripts>
+  </block-definition>
+</blocks>
