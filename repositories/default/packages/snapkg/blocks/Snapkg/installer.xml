@@ -13,67 +13,53 @@
       <input type="%s">https://raw.githubusercontent.com/elfin8er/Snapkg/development/repositories/default/packages/snapkg/index.json</input>
     </inputs>
     <script>
-      <block s="doSetVar">
-        <l>debug</l>
-        <block s="reportBoolean">
-          <l>
-            <bool>true</bool>
-          </l>
+      <block s="doIf">
+        <block s="reportNot">
+          <block s="reportListContainsItem">
+            <block s="reportApplyExtension">
+              <l>var_names(scope)</l>
+              <list>
+                <l>global</l>
+              </list>
+            </block>
+            <l>📦log</l>
+          </block>
         </block>
+        <script>
+          <block s="doApplyExtension">
+            <l>var_declare(scope, name)</l>
+            <list>
+              <l>global</l>
+              <l>📦log</l>
+            </list>
+          </block>
+          <block s="doApplyExtension">
+            <l>var_set(name, val)</l>
+            <list>
+              <l>📦log</l>
+              <block s="reportNewList">
+                <list></list>
+              </block>
+            </list>
+          </block>
+        </script>
+        <list></list>
       </block>
       <block s="doIf">
-        <block var="debug"/>
-        <script>
-          <block s="doIf">
-            <block s="reportNot">
-              <block s="reportListContainsItem">
-                <block s="reportApplyExtension">
-                  <l>var_names(scope)</l>
-                  <list>
-                    <l>global</l>
-                  </list>
-                </block>
-                <l>📦log</l>
-              </block>
-            </block>
-            <script>
-              <block s="doApplyExtension">
-                <l>var_declare(scope, name)</l>
-                <list>
-                  <l>global</l>
-                  <l>📦log</l>
-                </list>
-              </block>
-              <block s="doApplyExtension">
-                <l>var_set(name, val)</l>
-                <list>
-                  <l>📦log</l>
-                  <block s="reportNewList">
-                    <list></list>
-                  </block>
-                </list>
-              </block>
-            </script>
-            <list></list>
+        <block s="reportNot">
+          <block s="reportApplyExtension">
+            <l>var_showing(name)?</l>
+            <list>
+              <l>📦log</l>
+            </list>
           </block>
-          <block s="doIf">
-            <block s="reportNot">
-              <block s="reportApplyExtension">
-                <l>var_showing(name)?</l>
-                <list>
-                  <l>📦log</l>
-                </list>
-              </block>
-            </block>
-            <script>
-              <block s="doApplyExtension">
-                <l>var_show(name)</l>
-                <list>
-                  <l>📦log</l>
-                </list>
-              </block>
-            </script>
-            <list></list>
+        </block>
+        <script>
+          <block s="doApplyExtension">
+            <l>var_show(name)</l>
+            <list>
+              <l>📦log</l>
+            </list>
           </block>
         </script>
         <list></list>
@@ -124,7 +110,7 @@
       <block s="doAddToList">
         <block s="reportJoinWords">
           <list>
-            <l>Downloading </l>
+            <l>Downloading Snapkg from: </l>
             <block var="URL"/>
           </list>
         </block>
@@ -160,7 +146,7 @@
         <block s="reportListItem">
           <l>2</l>
           <block s="reportListItem">
-            <l>1</l>
+            <l>2</l>
             <block var="pkg"/>
           </block>
         </block>
@@ -170,7 +156,7 @@
         <block s="reportListItem">
           <l>2</l>
           <block s="reportListItem">
-            <l>2</l>
+            <l>3</l>
             <block var="pkg"/>
           </block>
         </block>
@@ -180,7 +166,7 @@
         <block s="reportListItem">
           <l>2</l>
           <block s="reportListItem">
-            <l>3</l>
+            <l>4</l>
             <block var="pkg"/>
           </block>
         </block>
@@ -197,7 +183,10 @@
               <l>2</l>
               <block s="reportListItem">
                 <l>1</l>
-                <block var="pkg_author"/>
+                <block s="reportListItem">
+                  <l>1</l>
+                  <block var="pkg_author"/>
+                </block>
               </block>
             </block>
           </list>
@@ -214,7 +203,7 @@
         <block s="reportListItem">
           <l>2</l>
           <block s="reportListItem">
-            <l>4</l>
+            <l>5</l>
             <block var="pkg"/>
           </block>
         </block>
@@ -223,55 +212,55 @@
         <l>item</l>
         <block var="pkg_sources"/>
         <script>
-          <block s="doAddToList">
-            <block var="item"/>
-            <block s="reportApplyExtension">
-              <l>var_get(name)</l>
-              <list>
-                <l>📦log</l>
-              </list>
+          <block s="doForEach">
+            <l>item</l>
+            <block s="reportListItem">
+              <l>2</l>
+              <block var="item"/>
             </block>
-          </block>
-          <block s="doSetVar">
-            <l>source</l>
-            <block s="reportURL">
-              <block s="reportListItem">
-                <l>2</l>
-                <block s="reportListItem">
-                  <l>1</l>
-                  <block var="item"/>
+            <script>
+              <block s="doAddToList">
+                <block var="item"/>
+                <block s="reportApplyExtension">
+                  <l>var_get(name)</l>
+                  <list>
+                    <l>📦log</l>
+                  </list>
                 </block>
               </block>
-            </block>
-          </block>
-          <block s="doAddToList">
-            <l>Importing source</l>
-            <block s="reportApplyExtension">
-              <l>var_get(name)</l>
-              <list>
-                <l>📦log</l>
-              </list>
-            </block>
-          </block>
-          <block s="doAddToList">
-            <block var="source"/>
-            <block s="reportApplyExtension">
-              <l>var_get(name)</l>
-              <list>
-                <l>📦log</l>
-              </list>
-            </block>
-          </block>
-          <block s="doRun">
-            <block s="reportJSFunction">
-              <list>
-                <l>xmlString</l>
-              </list>
-              <l>this.parentThatIsA(IDE_Morph).rawOpenBlocksString(xmlString, "block", true)</l>
-            </block>
-            <list>
-              <block var="source"/>
-            </list>
+              <block s="doSetVar">
+                <l>source</l>
+                <block s="reportURL">
+                  <block s="reportListItem">
+                    <l>2</l>
+                    <block s="reportListItem">
+                      <l>1</l>
+                      <block var="item"/>
+                    </block>
+                  </block>
+                </block>
+              </block>
+              <block s="doAddToList">
+                <l>Importing source</l>
+                <block s="reportApplyExtension">
+                  <l>var_get(name)</l>
+                  <list>
+                    <l>📦log</l>
+                  </list>
+                </block>
+              </block>
+              <block s="doRun">
+                <block s="reportJSFunction">
+                  <list>
+                    <l>xmlString</l>
+                  </list>
+                  <l>this.parentThatIsA(IDE_Morph).rawOpenBlocksString(xmlString, "block", true)</l>
+                </block>
+                <list>
+                  <block var="source"/>
+                </list>
+              </block>
+            </script>
           </block>
         </script>
       </block>
@@ -405,116 +394,6 @@
     <scripts>
       <script x="14" y="1768.1833333333332">
         <block s="errorObsolete"></block>
-      </script>
-      <script x="519" y="546.0999999999999">
-        <block s="doForEach">
-          <l>item</l>
-          <block s="reportListItem">
-            <l>2</l>
-            <block s="reportListItem">
-              <l>1</l>
-              <block s="reportApplyExtension">
-                <l>var_get(name)</l>
-                <list>
-                  <l>📦</l>
-                </list>
-              </block>
-            </block>
-          </block>
-          <script>
-            <block s="doIf">
-              <block s="reportVariadicEquals">
-                <list>
-                  <block s="reportListItem">
-                    <l>2</l>
-                    <block s="reportListItem">
-                      <l>1</l>
-                      <block var="item"/>
-                    </block>
-                  </block>
-                  <block var="pkg_name"/>
-                </list>
-              </block>
-              <script>
-                <block s="doIf">
-                  <block s="reportVariadicGreaterThan">
-                    <list>
-                      <block var="pkg_version"/>
-                      <block s="reportListItem">
-                        <l>2</l>
-                        <block s="reportListItem">
-                          <l>2</l>
-                          <block var="item"/>
-                        </block>
-                      </block>
-                    </list>
-                  </block>
-                  <script></script>
-                  <list>
-                    <l>
-                      <bool>true</bool>
-                    </l>
-                    <script>
-                      <block s="doAddToList">
-                        <block s="reportJoinWords">
-                          <list>
-                            <l>Package &apos;</l>
-                            <block s="reportListItem">
-                              <l>2</l>
-                              <block s="reportListItem">
-                                <l>1</l>
-                                <block var="item"/>
-                              </block>
-                            </block>
-                            <l>&apos; is already the latest version! Doing nothing.</l>
-                          </list>
-                        </block>
-                        <block s="reportApplyExtension">
-                          <l>var_get(name)</l>
-                          <list>
-                            <l>📦log</l>
-                          </list>
-                        </block>
-                      </block>
-                    </script>
-                  </list>
-                </block>
-                <block s="doAddToList">
-                  <block s="reportJoinWords">
-                    <list>
-                      <l>Done in </l>
-                      <block s="reportJoinWords">
-                        <list>
-                          <block s="reportDifference">
-                            <block s="reportDate">
-                              <l>
-                                <option>time in milliseconds</option>
-                              </l>
-                            </block>
-                            <block var="start_time"/>
-                          </block>
-                          <l> ms</l>
-                        </list>
-                      </block>
-                    </list>
-                  </block>
-                  <block s="reportApplyExtension">
-                    <l>var_get(name)</l>
-                    <list>
-                      <l>📦log</l>
-                    </list>
-                  </block>
-                </block>
-                <block s="doStopThis">
-                  <l>
-                    <option>this script</option>
-                  </l>
-                </block>
-              </script>
-              <list></list>
-            </block>
-          </script>
-        </block>
       </script>
     </scripts>
   </block-definition>
