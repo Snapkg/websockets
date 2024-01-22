@@ -10,7 +10,7 @@
     <code></code>
     <translations></translations>
     <inputs>
-      <input type="%s">https://raw.githubusercontent.com/elfin8er/Snapkg/master/packages/snapkg/index.json</input>
+      <input type="%s">https://raw.githubusercontent.com/elfin8er/Snapkg/development/repositories/default/packages/snapkg/index.json</input>
     </inputs>
     <script>
       <block s="doSetVar">
