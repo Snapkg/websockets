@@ -104,6 +104,10 @@ Below are just a few of the ways that you can help with the project:
   - Testing Snapkg and it's packages is one way to ensure a smooth experience for end-users.
   - Issues should be reported in the issue tracker.
 
+* **Snapkg Repo Maintainers**
+
+  - These are the people who are responsible for maintining this repo on GitHub.
+
 # License
 GNU General Public License v3.0 or later
 
