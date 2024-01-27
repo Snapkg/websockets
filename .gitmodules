@@ -1,3 +1,0 @@
-[submodule "default/packages/snapkg"]
-	path = default/packages/snapkg
-	url = https://github.com/Snapkg/snapkg
